@@ -11,6 +11,11 @@ import Post from "./Post";
 function Feed() {
   const [posts, setPosts] = useState([]);
 
+  const sentPost = (e) => {
+    e.preventDefault();
+  
+};
+
   return (
     <div className="feed">
       <div className="feed__inputContainer">
