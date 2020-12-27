@@ -1,17 +1,18 @@
 import React from "react";
+import "./Header.css";
 import SearchIcon from "@material-ui/icons/Search";
 import HomeIcon from "@material-ui/icons/Home";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import ChatIcon from "@material-ui/icons/Chat";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
-import "./Header.css";
 import HeaderOption from "./HeaderOption";
-import { useDispatch } from "react-redux";
-import { logout } from "./features/userSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { logout, selectUser } from "./features/userSlice";
 import { auth } from "./firebase";
 
 function Header() {
+  // const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
   const logoutOfApp = () => {
@@ -40,13 +41,8 @@ function Header() {
         <HeaderOption Icon={BusinessCenterIcon} title="Jobs" />
         <HeaderOption Icon={ChatIcon} title="Messaging" />
         <HeaderOption Icon={NotificationsIcon} title="Notifications" />
-        <HeaderOption
-          avatar={
-            "https://scontent.fsof3-1.fna.fbcdn.net/v/t1.0-9/66520453_2927652673927940_4096066888075837440_o.jpg?_nc_cat=104&ccb=2&_nc_sid=09cbfe&_nc_ohc=n6-EH1WLLfMAX_uUHc0&_nc_ht=scontent.fsof3-1.fna&oh=096e72a0cbcbdeedf96af59119ad24ef&oe=600C4976"
-          }
-          title="Me"
-          onClick={logoutOfApp}
-        />
+        <HeaderOption title="Logout" onClick={logoutOfApp} avatar="true" />
+        {/*  avatar={user.photoUrl}  */}
       </div>
     </div>
   );
